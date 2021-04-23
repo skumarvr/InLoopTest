@@ -20,6 +20,7 @@ namespace InLoop.DataLayer
         // For Mac or Linux, change this to `/tmp/blogging.db` or any other absolute path.
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            // TODO : Move 
             options.UseSqlite(@"Data Source=.\Database\InLoop.db");
         }
 
