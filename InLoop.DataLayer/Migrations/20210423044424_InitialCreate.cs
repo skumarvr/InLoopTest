@@ -8,7 +8,7 @@ namespace InLoop.DataLayer.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Lectures",
+                name: "Lecture",
                 columns: table => new
                 {
                     LectureId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -17,11 +17,11 @@ namespace InLoop.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lectures", x => x.LectureId);
+                    table.PrimaryKey("PK_Lecture", x => x.LectureId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "LectureTheatres",
+                name: "LectureTheatre",
                 columns: table => new
                 {
                     LectureTheatreId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -31,11 +31,11 @@ namespace InLoop.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LectureTheatres", x => x.LectureTheatreId);
+                    table.PrimaryKey("PK_LectureTheatre", x => x.LectureTheatreId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Students",
+                name: "Student",
                 columns: table => new
                 {
                     StudentId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -44,11 +44,11 @@ namespace InLoop.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.StudentId);
+                    table.PrimaryKey("PK_Student", x => x.StudentId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subjects",
+                name: "Subject",
                 columns: table => new
                 {
                     SubjectId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -57,11 +57,11 @@ namespace InLoop.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subjects", x => x.SubjectId);
+                    table.PrimaryKey("PK_Subject", x => x.SubjectId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Enrollments",
+                name: "Enrollment",
                 columns: table => new
                 {
                     StudentId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -70,21 +70,21 @@ namespace InLoop.DataLayer.Migrations
                 constraints: table =>
                 {
                     table.ForeignKey(
-                        name: "FK_Enrollments_Students_StudentId",
+                        name: "FK_Enrollment_Student_StudentId",
                         column: x => x.StudentId,
-                        principalTable: "Students",
+                        principalTable: "Student",
                         principalColumn: "StudentId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Enrollments_Subjects_SubjectId",
+                        name: "FK_Enrollment_Subject_SubjectId",
                         column: x => x.SubjectId,
-                        principalTable: "Subjects",
+                        principalTable: "Subject",
                         principalColumn: "SubjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "LectureSchedules",
+                name: "LectureSchedule",
                 columns: table => new
                 {
                     LectureScheduleId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -100,72 +100,72 @@ namespace InLoop.DataLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LectureSchedules", x => x.LectureScheduleId);
+                    table.PrimaryKey("PK_LectureSchedule", x => x.LectureScheduleId);
                     table.ForeignKey(
-                        name: "FK_LectureSchedules_Lectures_LectureId",
+                        name: "FK_LectureSchedule_Lecture_LectureId",
                         column: x => x.LectureId,
-                        principalTable: "Lectures",
+                        principalTable: "Lecture",
                         principalColumn: "LectureId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_LectureSchedules_LectureTheatres_LectureTheatreId",
+                        name: "FK_LectureSchedule_LectureTheatre_LectureTheatreId",
                         column: x => x.LectureTheatreId,
-                        principalTable: "LectureTheatres",
+                        principalTable: "LectureTheatre",
                         principalColumn: "LectureTheatreId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_LectureSchedules_Subjects_SubjectId",
+                        name: "FK_LectureSchedule_Subject_SubjectId",
                         column: x => x.SubjectId,
-                        principalTable: "Subjects",
+                        principalTable: "Subject",
                         principalColumn: "SubjectId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollments_StudentId",
-                table: "Enrollments",
+                name: "IX_Enrollment_StudentId",
+                table: "Enrollment",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollments_SubjectId",
-                table: "Enrollments",
+                name: "IX_Enrollment_SubjectId",
+                table: "Enrollment",
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LectureSchedules_LectureId",
-                table: "LectureSchedules",
+                name: "IX_LectureSchedule_LectureId",
+                table: "LectureSchedule",
                 column: "LectureId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LectureSchedules_LectureTheatreId",
-                table: "LectureSchedules",
+                name: "IX_LectureSchedule_LectureTheatreId",
+                table: "LectureSchedule",
                 column: "LectureTheatreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LectureSchedules_SubjectId",
-                table: "LectureSchedules",
+                name: "IX_LectureSchedule_SubjectId",
+                table: "LectureSchedule",
                 column: "SubjectId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Enrollments");
+                name: "Enrollment");
 
             migrationBuilder.DropTable(
-                name: "LectureSchedules");
+                name: "LectureSchedule");
 
             migrationBuilder.DropTable(
-                name: "Students");
+                name: "Student");
 
             migrationBuilder.DropTable(
-                name: "Lectures");
+                name: "Lecture");
 
             migrationBuilder.DropTable(
-                name: "LectureTheatres");
+                name: "LectureTheatre");
 
             migrationBuilder.DropTable(
-                name: "Subjects");
+                name: "Subject");
         }
     }
 }

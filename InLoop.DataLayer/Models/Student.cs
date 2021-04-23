@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace InLoop.DataLayer.Models
 {
@@ -8,6 +6,5 @@ namespace InLoop.DataLayer.Models
     {
         public int StudentId { get; set; }
         public string Name { get; set; }
-        public List<Enrollment> Posts { get; } = new List<Enrollment>();
     }
 }

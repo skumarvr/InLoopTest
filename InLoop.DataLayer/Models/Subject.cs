@@ -8,7 +8,6 @@ namespace InLoop.DataLayer.Models
     {
         public int SubjectId { get; set; }
         public string Name { get; set; }
-        public List<Enrollment> Enrollments { get; } = new List<Enrollment>();
         public List<LectureSchedule> LectureSchedules { get; } = new List<LectureSchedule>();
     }
 }

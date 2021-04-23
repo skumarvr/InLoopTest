@@ -4,10 +4,5 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\InLoop.DataLayer\InLoop.DataLayer.csproj" />
-    <ProjectReference Include="..\InLoop.Domain\InLoop.Domain.csproj" />
-  </ItemGroup>
-
 
 </Project>
