@@ -24,11 +24,11 @@ namespace InLoop.DataLayer.Migrations
                     b.Property<int>("SubjectId")
                         .HasColumnType("INTEGER");
 
-                    b.HasIndex("StudentId");
+                    b.HasKey("StudentId", "SubjectId");
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("Enrollment");
+                    b.ToTable("Enrollments");
                 });
 
             modelBuilder.Entity("InLoop.DataLayer.Models.Lecture", b =>
@@ -42,7 +42,7 @@ namespace InLoop.DataLayer.Migrations
 
                     b.HasKey("LectureId");
 
-                    b.ToTable("Lecture");
+                    b.ToTable("Lectures");
                 });
 
             modelBuilder.Entity("InLoop.DataLayer.Models.LectureSchedule", b =>
@@ -57,16 +57,10 @@ namespace InLoop.DataLayer.Migrations
                     b.Property<DateTime>("Endtime")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("LeatureId")
+                    b.Property<int>("LectureId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("LeatureTheatreId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("LectureId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("LectureTheatreId")
+                    b.Property<int>("LectureTheatreId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("StartTime")
@@ -83,7 +77,7 @@ namespace InLoop.DataLayer.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("LectureSchedule");
+                    b.ToTable("LectureSchedules");
                 });
 
             modelBuilder.Entity("InLoop.DataLayer.Models.LectureTheatre", b =>
@@ -100,7 +94,7 @@ namespace InLoop.DataLayer.Migrations
 
                     b.HasKey("LectureTheatreId");
 
-                    b.ToTable("LectureTheatre");
+                    b.ToTable("LectureTheatres");
                 });
 
             modelBuilder.Entity("InLoop.DataLayer.Models.Student", b =>
@@ -114,7 +108,7 @@ namespace InLoop.DataLayer.Migrations
 
                     b.HasKey("StudentId");
 
-                    b.ToTable("Student");
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("InLoop.DataLayer.Models.Subject", b =>
@@ -128,7 +122,7 @@ namespace InLoop.DataLayer.Migrations
 
                     b.HasKey("SubjectId");
 
-                    b.ToTable("Subject");
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("InLoop.DataLayer.Models.Enrollment", b =>
@@ -154,11 +148,15 @@ namespace InLoop.DataLayer.Migrations
                 {
                     b.HasOne("InLoop.DataLayer.Models.Lecture", "Lecture")
                         .WithMany("LectureSchedules")
-                        .HasForeignKey("LectureId");
+                        .HasForeignKey("LectureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("InLoop.DataLayer.Models.LectureTheatre", "LectureTheatre")
                         .WithMany("LectureSchedules")
-                        .HasForeignKey("LectureTheatreId");
+                        .HasForeignKey("LectureTheatreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("InLoop.DataLayer.Models.Subject", "Subject")
                         .WithMany("LectureSchedules")

@@ -1,0 +1,22 @@
+﻿[
+  {
+    "StudentId": 1,
+    "SubjectId": 1
+  },
+  {
+    "StudentId": 1,
+    "SubjectId": 2
+  },
+  {
+    "StudentId": 1,
+    "SubjectId": 3
+  },
+  {
+    "StudentId": 2,
+    "SubjectId": 3
+  },
+  {
+    "StudentId": 2,
+    "SubjectId": 4
+  }
+]

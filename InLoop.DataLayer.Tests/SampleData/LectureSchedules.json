@@ -1,0 +1,34 @@
+﻿[
+  {
+    "DayOfTheWeek": 1,
+    "StartTime": "09:00:00",
+    "Endtime": "10:00:00",
+    "SubjectId": 1,
+    "LectureId": 11,
+    "LectureTheatreId": 1
+  },
+  {
+    "DayOfTheWeek": 2,
+    "StartTime": "09:00:00",
+    "Endtime": "10:00:00",
+    "SubjectId": 1,
+    "LectureId": 12,
+    "LectureTheatreId": 2
+  },
+  {
+    "DayOfTheWeek": 1,
+    "StartTime": "09:00:00",
+    "Endtime": "10:00:00",
+    "SubjectId": 2,
+    "LectureId": 21,
+    "LectureTheatreId": 3
+  },
+  {
+    "DayOfTheWeek": 1,
+    "StartTime": "09:00:00",
+    "Endtime": "10:00:00",
+    "SubjectId": 3,
+    "LectureId": 31,
+    "LectureTheatreId": 4
+  }
+]

@@ -1,0 +1,27 @@
+﻿[
+  {
+    "LectureTheatreId": 1,
+    "Name": "LectureTheatre1",
+    "Capacity":  100
+  },
+  {
+    "LectureTheatreId": 2,
+    "Name": "LectureTheatre2",
+    "Capacity": 100
+  },
+  {
+    "LectureTheatreId": 3,
+    "Name": "LectureTheatre3",
+    "Capacity": 100
+  },
+  {
+    "LectureTheatreId": 4,
+    "Name": "LectureTheatre4",
+    "Capacity": 100
+  },
+  {
+    "LectureTheatreId": 5,
+    "Name": "LectureTheatre5",
+    "Capacity": 100
+  }
+]

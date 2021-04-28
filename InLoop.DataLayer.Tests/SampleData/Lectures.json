@@ -1,0 +1,18 @@
+﻿[
+  {
+    "LectureId": 11,
+    "Name": "Subject1_Lecture1"
+  },
+  {
+    "LectureId": 12,
+    "Name": "Subject1_Lecture2"
+  },
+  {
+    "LectureId": 21,
+    "Name": "Subject2_Lecture1"
+  },
+  {
+    "LectureId": 31,
+    "Name": "Subject3_Lecture1"
+  }
+]

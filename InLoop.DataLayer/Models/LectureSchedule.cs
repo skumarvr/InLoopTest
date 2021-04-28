@@ -14,12 +14,12 @@ namespace InLoop.DataLayer.Models
         public DateTime Endtime { get; set; }
 
         public int SubjectId { get; set; }
-        public Subject Subject { get; set; }
+        public virtual Subject Subject { get; set; }
 
-        public int LeatureId { get; set; }
-        public Lecture Lecture { get; set; }
+        public int LectureId { get; set; }
+        public virtual Lecture Lecture { get; set; }
 
-        public int LeatureTheatreId { get; set; }
-        public LectureTheatre LectureTheatre { get; set; }
+        public int LectureTheatreId { get; set; }
+        public virtual LectureTheatre LectureTheatre { get; set; }
     }
 }

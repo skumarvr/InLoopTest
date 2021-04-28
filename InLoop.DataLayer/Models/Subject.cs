@@ -8,6 +8,6 @@ namespace InLoop.DataLayer.Models
     {
         public int SubjectId { get; set; }
         public string Name { get; set; }
-        public List<LectureSchedule> LectureSchedules { get; } = new List<LectureSchedule>();
+        public virtual ICollection<LectureSchedule> LectureSchedules { get; set; } = new List<LectureSchedule>();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using InLoop.DataLayer.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace InLoop.DataLayer
 {
@@ -9,12 +8,21 @@ namespace InLoop.DataLayer
 
     public class InLoopDbContext : DbContext
     {
-        public DbSet<Enrollment> Enrollment { get; set; }
-        public DbSet<Lecture> Lecture { get; set; }
-        public DbSet<LectureSchedule> LectureSchedule { get; set; }
-        public DbSet<LectureTheatre> LectureTheatre { get; set; }
-        public DbSet<Student> Student { get; set; }
-        public DbSet<Subject> Subject { get; set; }
+        public InLoopDbContext()
+        {
+        }
+
+        public InLoopDbContext(DbContextOptions<InLoopDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Lecture> Lectures { get; set; }
+        public DbSet<LectureSchedule> LectureSchedules { get; set; }
+        public DbSet<LectureTheatre> LectureTheatres { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
 
         // The following configures EF to create a Sqlite database file as `C:\blogging.db`.
         // For Mac or Linux, change this to `/tmp/blogging.db` or any other absolute path.
@@ -26,8 +34,9 @@ namespace InLoop.DataLayer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Enrollment>(e => e.HasNoKey());
+            // modelBuilder.Entity<Enrollment>(e => e.HasNoKey());
+            modelBuilder.Entity<Enrollment>()
+                        .HasKey(x => new { x.StudentId, x.SubjectId });
         }
     }
-
 }
