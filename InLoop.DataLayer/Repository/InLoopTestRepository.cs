@@ -36,7 +36,8 @@ namespace InLoop.DataLayer.Repository
 
         public async Task AddStudentAsync(Student student, CancellationToken ct = default)
         {
-            _context.Add(student);
+            var data = _mapperConfig.CreateMapper().Map<Models.Student>(student);
+            _context.Add(data);
             await _context.SaveChangesAsync();
         }
 
@@ -49,7 +50,8 @@ namespace InLoop.DataLayer.Repository
 
         public async Task AddSubjectAsync(Subject subject, CancellationToken ct = default)
         {
-            _context.Add(subject);
+            var data = _mapperConfig.CreateMapper().Map<Models.Subject>(subject);
+            _context.Add(data);
             await _context.SaveChangesAsync();
         }
 
@@ -62,7 +64,8 @@ namespace InLoop.DataLayer.Repository
 
         public async Task AddLectureTheatreAsync(LectureTheatre lectureTheatre, CancellationToken ct = default)
         {
-            _context.Add(lectureTheatre);
+            var data = _mapperConfig.CreateMapper().Map<Models.LectureTheatre>(lectureTheatre);
+            _context.Add(data);
             await _context.SaveChangesAsync();
         }
 

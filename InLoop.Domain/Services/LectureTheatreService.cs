@@ -1,4 +1,6 @@
-﻿using InLoop.Domain.ViewModels;
+﻿using AutoMapper;
+using InLoop.Domain.Repository;
+using InLoop.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,14 +10,21 @@ namespace InLoop.Domain.Services
 {
     public class LectureTheatreService
     {
-        public async Task<List<LectureTheatre>> GetLectureTheatres(CancellationToken ct = default(CancellationToken))
+        private readonly IInLoopTestRepository _repository;
+
+        public LectureTheatreService(IInLoopTestRepository repository)
         {
-            throw new Exception();
+            _repository = repository;
         }
 
-        public async Task<bool> AddLectureTheatre(LectureTheatre lectureTheatre, CancellationToken ct = default(CancellationToken))
+        public async Task<List<LectureTheatre>> GetLectureTheatresAsync(CancellationToken ct = default(CancellationToken))
         {
-            throw new Exception();
+            return await _repository.GetLectureTheatresAsync();
+        }
+
+        public async Task AddLectureTheatreAsync(LectureTheatre lectureTheatre, CancellationToken ct = default(CancellationToken))
+        {
+            await _repository.AddLectureTheatreAsync(lectureTheatre);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using InLoop.Domain.ViewModels;
+﻿using AutoMapper;
+using InLoop.Domain.Repository;
+using InLoop.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,19 +10,26 @@ namespace InLoop.Domain.Services
 {
     public class StudentService
     {
-        public async Task<List<Student>> GetStudents(CancellationToken ct = default(CancellationToken))
+        private readonly IInLoopTestRepository _repository;
+
+        public StudentService(IInLoopTestRepository repository)
         {
-            throw new Exception();
+            _repository = repository;
         }
 
-        public async Task<bool> AddStudent(Student student, CancellationToken ct = default(CancellationToken))
+        public async Task<List<Student>> GetStudentsAsync(CancellationToken ct = default(CancellationToken))
         {
-            throw new Exception();
+            return await _repository.GetStudentsAsync();
         }
 
-        public async Task<List<Subject>> GetEnrolmentsForStudent(int studentId, CancellationToken ct = default(CancellationToken))
+        public async Task AddStudentAsync(Student student, CancellationToken ct = default(CancellationToken))
         {
-            throw new Exception();
+            await _repository.AddStudentAsync(student);
+        }
+
+        public async Task<List<Subject>> GetEnrolmentsForStudentAsync(int studentId, CancellationToken ct = default(CancellationToken))
+        {
+            return await _repository.GetEnrolmentsForStudentAsync(studentId);
         }
     }
 }

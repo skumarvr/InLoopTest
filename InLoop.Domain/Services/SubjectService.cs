@@ -1,4 +1,6 @@
-﻿using InLoop.Domain.ViewModels;
+﻿using AutoMapper;
+using InLoop.Domain.Repository;
+using InLoop.Domain.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -6,26 +8,33 @@ using System.Threading.Tasks;
 
 namespace InLoop.Domain.Services
 {
-    class SubjectService
+    public class SubjectService
     {
-        public async Task<List<Subject>> GetSubjects(CancellationToken ct = default(CancellationToken))
+        private readonly IInLoopTestRepository _repository;
+
+        public SubjectService(IInLoopTestRepository repository)
         {
-            throw new Exception();
+            _repository = repository;
         }
 
-        public async Task<bool> AddSubject(Subject subject, CancellationToken ct = default(CancellationToken))
+        public async Task<List<Subject>> GetSubjectsAsync(CancellationToken ct = default(CancellationToken))
         {
-            throw new Exception();
+            return await _repository.GetSubjectsAsync();
         }
 
-        public async Task<List<Lecture>> GetLecturesForSubject(int subjectId, CancellationToken ct = default(CancellationToken))
+        public async Task AddSubjectAsync(Subject subject, CancellationToken ct = default(CancellationToken))
         {
-            throw new Exception();
+            await _repository.AddSubjectAsync(subject);
         }
 
-        public async Task<List<Student>> GetStudentsForSubject(int subjectId, CancellationToken ct = default(CancellationToken))
+        public async Task<List<Lecture>> GetLecturesForSubjectAsync(int subjectId, CancellationToken ct = default(CancellationToken))
         {
-            throw new Exception();
+            return await _repository.GetLecturesForSubjectAsync(subjectId);
+        }
+
+        public async Task<List<Student>> GetStudentsForSubjectAsync(int subjectId, CancellationToken ct = default(CancellationToken))
+        {
+            return await _repository.GetStudentsForSubjectAsync(subjectId);
         }
     }
 }
