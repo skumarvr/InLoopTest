@@ -30,7 +30,7 @@ namespace InLoop
             services.AddControllers();
 
             services.AddDbContext<InLoopContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("InLoopContext")));
+                    options.UseSqlite(Configuration.GetConnectionString("InLoopContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

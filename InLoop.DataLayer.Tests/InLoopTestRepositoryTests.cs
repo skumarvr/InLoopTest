@@ -14,6 +14,7 @@ namespace InLoop.DataLayer.Tests
         private DbContextOptions<InLoopDbContext> ContextOptions;
         private IConfigurationProvider MapperConfiguration;
         private InLoopDbContext DbContext;
+        private InLoopTestRepository Repository;
 
         [OneTimeSetUp]
         public void Init()
@@ -27,13 +28,13 @@ namespace InLoop.DataLayer.Tests
                 mc.AddProfile(new SubjectProfile());
             }).CreateMapper().ConfigurationProvider;
             DbContext = new InLoopDbContext(ContextOptions);
+            Repository = new InLoopTestRepository(DbContext, MapperConfiguration);
         }
 
         [Test]
         public async Task Reading_Students()
         {
-            var repo = new InLoopTestRepository(DbContext, MapperConfiguration);
-            var result = await repo.GetStudentsAsync();
+            var result = await Repository.GetStudentsAsync();
 
             Assert.IsInstanceOf<List<Domain.ViewModels.Student>>(result);
             Assert.AreEqual(result.Count, 5);
@@ -62,8 +63,7 @@ namespace InLoop.DataLayer.Tests
         [Test]
         public async Task Reading_Subjects()
         {
-            var repo = new InLoopTestRepository(DbContext, MapperConfiguration);
-            var result = await repo.GetSubjectsAsync();
+            var result = await Repository.GetSubjectsAsync();
 
             Assert.IsInstanceOf<List<Domain.ViewModels.Subject>>(result);
             Assert.AreEqual(result.Count, 5);
@@ -92,8 +92,7 @@ namespace InLoop.DataLayer.Tests
         [Test]
         public async Task Reading_Lecture_Theatres()
         {
-            var repo = new InLoopTestRepository(DbContext, MapperConfiguration);
-            var result = await repo.GetLectureTheatresAsync();
+            var result = await Repository.GetLectureTheatresAsync();
 
             Assert.IsInstanceOf<List<Domain.ViewModels.LectureTheatre>>(result);
             Assert.AreEqual(result.Count, 5);
@@ -122,9 +121,8 @@ namespace InLoop.DataLayer.Tests
         [Test]
         public async Task Reading_Lecture_Scheduled_For_A_Subject()
         {
-            var repo = new InLoopTestRepository(DbContext, MapperConfiguration);
             var subjectId = 1;
-            var result = await repo.GetLecturesForSubjectAsync(subjectId);
+            var result = await Repository.GetLecturesForSubjectAsync(subjectId);
 
             Assert.IsInstanceOf<List<Domain.ViewModels.Lecture>>(result);
             Assert.AreEqual(result.Count, 2);
@@ -147,9 +145,8 @@ namespace InLoop.DataLayer.Tests
         [Test]
         public async Task Reading_Enrollments_For_A_Student()
         {
-            var repo = new InLoopTestRepository(DbContext, MapperConfiguration);
             var studentId = 1;
-            var result = await repo.GetEnrolmentsForStudentAsync(studentId);
+            var result = await Repository.GetEnrolmentsForStudentAsync(studentId);
 
             Assert.IsInstanceOf<List<Domain.ViewModels.Subject>>(result);
             Assert.AreEqual(result.Count, 3);
@@ -170,9 +167,8 @@ namespace InLoop.DataLayer.Tests
         [Test]
         public async Task Reading_Students_For_A_Subject()
         {
-            var repo = new InLoopTestRepository(DbContext, MapperConfiguration);
             var subjectId = 3;
-            var result = await repo.GetStudentsForSubjectAsync(subjectId);
+            var result = await Repository.GetStudentsForSubjectAsync(subjectId);
 
             Assert.IsInstanceOf<List<Domain.ViewModels.Student>>(result);
             Assert.AreEqual(result.Count, 2);

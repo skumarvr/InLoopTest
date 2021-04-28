@@ -8,10 +8,6 @@ namespace InLoop.DataLayer
 
     public class InLoopDbContext : DbContext
     {
-        public InLoopDbContext()
-        {
-        }
-
         public InLoopDbContext(DbContextOptions<InLoopDbContext> options)
             : base(options)
         {
@@ -23,14 +19,6 @@ namespace InLoop.DataLayer
         public DbSet<LectureTheatre> LectureTheatres { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Subject> Subjects { get; set; }
-
-        // The following configures EF to create a Sqlite database file as `C:\blogging.db`.
-        // For Mac or Linux, change this to `/tmp/blogging.db` or any other absolute path.
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            // TODO : Move 
-            options.UseSqlite(@"Data Source=.\Database\InLoop.db");
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
