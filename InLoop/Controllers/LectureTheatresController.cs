@@ -19,6 +19,10 @@ namespace InLoop.Controllers
         }
 
         // GET: api/LectureTheatres
+        /// <summary>
+        /// Reading lecture theatres
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LectureTheatre>>> GetLectureTheatres()
         {
@@ -26,6 +30,11 @@ namespace InLoop.Controllers
         }
 
         // POST: api/LectureTheatre
+        /// <summary>
+        /// Creating lecture theatre
+        /// </summary>
+        /// <param name="lectureTheatre"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<LectureTheatre>> PostLectureTheatreResponse(LectureTheatre lectureTheatre)
         {

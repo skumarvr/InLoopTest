@@ -7,10 +7,8 @@ using InLoop.Domain.Services;
 using InLoop.Domain.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace InLoop.Domain.Tests

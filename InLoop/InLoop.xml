@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InLoop</name>
+    </assembly>
+    <members>
+        <member name="M:InLoop.Controllers.LectureTheatresController.GetLectureTheatres">
+            <summary>
+            Reading lecture theatres
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:InLoop.Controllers.LectureTheatresController.PostLectureTheatreResponse(InLoop.Domain.ViewModels.LectureTheatre)">
+            <summary>
+            Creating lecture theatre
+            </summary>
+            <param name="lectureTheatre"></param>
+            <returns></returns>
+        </member>
+        <member name="M:InLoop.Controllers.StudentsController.GetStudents">
+            <summary>
+            Reading students
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:InLoop.Controllers.StudentsController.PostStudent(InLoop.Domain.ViewModels.Student)">
+            <summary>
+            Creating student
+            </summary>
+            <param name="student"></param>
+            <returns></returns>
+        </member>
+        <member name="M:InLoop.Controllers.StudentsController.GetEnrollmentsForStudent(System.Int32)">
+            <summary>
+            Reading enrolments as a collection sub-resource of a student resource, returning the list of enrolments
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:InLoop.Controllers.SubjectsController.GetSubjects">
+            <summary>
+            Reading subjects
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:InLoop.Controllers.SubjectsController.PostSubject(InLoop.Domain.ViewModels.Subject)">
+            <summary>
+            Creating subject
+            </summary>
+            <param name="subject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:InLoop.Controllers.SubjectsController.GetLecturesForSubject(System.Int32)">
+            <summary>
+            Reading lectures on a schedule as sub-resources of a subject, 
+            where the lecture theatre is identified as a property of the lecture
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:InLoop.Controllers.SubjectsController.GetStudentsForSubject(System.Int32)">
+            <summary>
+            Reading students as a collection sub-resource of a subject, 
+            returning the list of students enrolled in the subject.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

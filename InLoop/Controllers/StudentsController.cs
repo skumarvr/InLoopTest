@@ -19,6 +19,10 @@ namespace InLoop.Controllers
         }
 
         // GET: api/Students
+        /// <summary>
+        /// Reading students
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
@@ -26,6 +30,11 @@ namespace InLoop.Controllers
         }
 
         // POST: api/Students
+        /// <summary>
+        /// Creating student
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Student>> PostStudent(Student student)
         {
@@ -34,7 +43,12 @@ namespace InLoop.Controllers
             return CreatedAtAction("GetStudent", new { id = student.Id }, student);
         }
 
-        // GET: api/Students/{id}/enrollmentss
+        // GET: api/Students/{id}/enrollments
+        /// <summary>
+        /// Reading enrolments as a collection sub-resource of a student resource, returning the list of enrolments
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{id}/Enrollments")]
         public async Task<ActionResult<IEnumerable<Subject>>> GetEnrollmentsForStudent(int id)

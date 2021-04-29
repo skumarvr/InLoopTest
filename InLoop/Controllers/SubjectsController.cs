@@ -19,6 +19,10 @@ namespace InLoop.Controllers
         }
 
         // GET: api/Subjects
+        /// <summary>
+        /// Reading subjects
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Subject>>> GetSubjects()
         {
@@ -26,6 +30,11 @@ namespace InLoop.Controllers
         }
 
         // POST: api/Subjects
+        /// <summary>
+        /// Creating subject
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Subject>> PostSubject(Subject subject)
         {
@@ -35,6 +44,12 @@ namespace InLoop.Controllers
         }
 
         // POST: api/Subjects/{id}/Lectures
+        /// <summary>
+        /// Reading lectures on a schedule as sub-resources of a subject, 
+        /// where the lecture theatre is identified as a property of the lecture
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{id}/Lectures")]
         public async Task<List<Lecture>> GetLecturesForSubject(int id)
@@ -43,6 +58,12 @@ namespace InLoop.Controllers
         }
 
         // POST: api/Subjects/{id}/Students
+        /// <summary>
+        /// Reading students as a collection sub-resource of a subject, 
+        /// returning the list of students enrolled in the subject.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{id}/Students")]
         public async Task<List<Student>> GetStudentsForSubject(int id)
