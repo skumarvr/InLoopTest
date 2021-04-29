@@ -5,17 +5,6 @@ namespace Exercise2.Tests
 {
     public class FileReverseTests
     {
-        [OneTimeSetUp]
-        public void Setup()
-        {
-        }
-
-        [OneTimeTearDown]
-        public void TearDown()
-        {
-
-        }
-
         [Test]
         public void Test_ReverseContents()
         {
@@ -51,16 +40,47 @@ namespace Exercise2.Tests
             string fileName = ".\\Reverse.txt";
             FileReverse fr = new FileReverse();
 
+            // Reverse contents
             var input = new string[] { "QWERT", "ASDFG", "ZXCVB" };
             var output4 = fr.ReverseContents(input);
             Assert.AreEqual(new string[] { "BVCXZ", "GFDSA", "TREWQ" }, output4);
 
+            // Save File
             fr.SaveFile(fileName, output4);
-
             var fileContents = fr.OpenFile(fileName);
             Assert.AreEqual(new string[] { "BVCXZ", "GFDSA", "TREWQ" }, fileContents);
 
             File.Delete(fileName);
+        }
+
+        [Test]
+        public void Test_ReverseContents_UsingFile()
+        {
+            string inputFile = ".\\TestFile.txt";
+            string outputFile = ".\\TestFile_Output.txt";
+            FileReverse fr = new FileReverse();
+            
+            // Open Test File
+            string[] input = fr.OpenFile(inputFile);
+            Assert.AreEqual(new string[] { "QWERT", "ASDFG", "ZXCVB" }, input);
+
+            // Reverse contents
+            var revContents = fr.ReverseContents(input);
+            Assert.AreEqual(new string[] { "BVCXZ", "GFDSA", "TREWQ" }, revContents);
+
+            // Save File
+            fr.SaveFile(outputFile, revContents);
+            var fileContents = fr.OpenFile(outputFile);
+            Assert.AreEqual(new string[] { "BVCXZ", "GFDSA", "TREWQ" }, fileContents);
+
+            File.Delete(outputFile);
+        }
+
+        [Test]
+        public void Test_InputFileNotFoundException()
+        {
+            FileReverse fr = new FileReverse();
+            Assert.Throws<FileNotFoundException>(() => fr.OpenFile("FileNotFound.txt"));
         }
     }
 }

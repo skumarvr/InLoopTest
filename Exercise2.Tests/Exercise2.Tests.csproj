@@ -16,4 +16,10 @@
     <ProjectReference Include="..\Exercise2\Exercise2.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestFile.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
