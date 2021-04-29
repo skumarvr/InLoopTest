@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using InLoop.Domain.Repository;
+﻿using InLoop.Domain.Repository;
 using InLoop.Domain.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;

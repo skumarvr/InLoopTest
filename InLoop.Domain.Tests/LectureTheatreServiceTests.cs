@@ -36,7 +36,7 @@ namespace InLoop.Domain.Tests
             MockDbContext.Seed(_options);
         }
 
-        [Test]
+        [Test, Order(1)]
         public async Task Reading_Lecture_Theatres()
         {
             var service = new LectureTheatreService(_repo);
@@ -66,7 +66,7 @@ namespace InLoop.Domain.Tests
             Assert.AreEqual(LectureTheatre5.Id, 5);
         }
 
-        [Test]
+        [Test, Order(2)]
         public async Task AddLectureTheatreAsync()
         {
             LectureTheatre lectureTheatre = new LectureTheatre()

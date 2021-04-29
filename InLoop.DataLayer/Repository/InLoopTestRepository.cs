@@ -74,7 +74,6 @@ namespace InLoop.DataLayer.Repository
             var lectures = await _context.Subjects
                                         .Where(s => s.SubjectId == subjectId)
                                         .SelectMany(s => s.LectureSchedules.Select(ls => ls.Lecture))
-                                          .Distinct()
                                           .Include(l => l.LectureSchedules)
                                           .ThenInclude(ls => ls.LectureTheatre)
                                         .ProjectTo<Lecture>(_mapperConfig)

@@ -1,17 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using InLoop.DataLayer;
+using InLoop.DataLayer.Repository;
+using InLoop.Domain.Repository;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using InLoop.Data;
+using System.Reflection;
 
 namespace InLoop
 {
@@ -29,8 +25,12 @@ namespace InLoop
         {
             services.AddControllers();
 
-            services.AddDbContext<InLoopContext>(options =>
+            services.AddDbContext<InLoopDbContext>(options =>
                     options.UseSqlite(Configuration.GetConnectionString("InLoopContext")));
+
+            services.AddScoped<IInLoopTestRepository, InLoopTestRepository>();
+
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(InLoopDbContext)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
