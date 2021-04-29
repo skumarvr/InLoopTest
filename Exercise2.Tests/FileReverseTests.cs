@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.IO;
 
 namespace Exercise2.Tests
 {
@@ -37,11 +38,29 @@ namespace Exercise2.Tests
 
             input = new string[] { "QWERT", "ASDFG" };
             var output3 = fr.ReverseContents(input);
-            Assert.AreEqual(new string[] { "GFDSA", "TREWQ"}, output3);
+            Assert.AreEqual(new string[] { "GFDSA", "TREWQ" }, output3);
 
             input = new string[] { "QWERT", "ASDFG", "ZXCVB" };
             var output4 = fr.ReverseContents(input);
             Assert.AreEqual(new string[] { "BVCXZ", "GFDSA", "TREWQ" }, output4);
+        }
+
+        [Test]
+        public void Test_SaveReverseContentsToFile()
+        {
+            string fileName = ".\\Reverse.txt";
+            FileReverse fr = new FileReverse();
+
+            var input = new string[] { "QWERT", "ASDFG", "ZXCVB" };
+            var output4 = fr.ReverseContents(input);
+            Assert.AreEqual(new string[] { "BVCXZ", "GFDSA", "TREWQ" }, output4);
+
+            fr.SaveFile(fileName, output4);
+
+            var fileContents = fr.OpenFile(fileName);
+            Assert.AreEqual(new string[] { "BVCXZ", "GFDSA", "TREWQ" }, fileContents);
+
+            File.Delete(fileName);
         }
     }
 }
