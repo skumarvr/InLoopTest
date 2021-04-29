@@ -51,13 +51,14 @@ namespace InLoop
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "InLoop API V1");
-            });
+                // https://dev.to/amoenus/how-to-integrate-swagger-ui-in-a-net-core-web-api-application-amoenus-dev-13o1
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "InLoop API V1");
+                });
+            }
 
             app.UseHttpsRedirection();
 
